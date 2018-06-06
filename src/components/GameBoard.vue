@@ -1,8 +1,6 @@
 <template>
   <div
     class="GameBoard"
-    @dragenter="onDragEnter"
-    @dragleave="onDragLeave"
     @dragover="onDragOver"
     @drop="onDrop"
   >
@@ -17,11 +15,6 @@ import TaskList from '@/components/TaskList'
 import WorkerList from '@/components/WorkerList'
 
 export default {
-  data() {
-    return {
-      isDragOver: false
-    }
-  },
   components: {
     TaskList,
     WorkerList
@@ -34,21 +27,13 @@ export default {
   },
   methods: {
     ...mapActions(['assignWorkerToTask']),
-    onDragEnter(e) {
-      this.isDragOver = true
-    },
-    onDragLeave(e) {
-      this.isDragOver = false
-    },
     onDragOver(e) {
       e.preventDefault()
       e.stopPropagation()
     },
     onDrop(e) {
-      console.log('drop to board')
       e.preventDefault()
       e.stopPropagation()
-      this.isDragOver = false
       const workerId = e.dataTransfer.getData('text/plain')
       this.assignWorkerToTask({ workerId, taskId: '' })
     }
