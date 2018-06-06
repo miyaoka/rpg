@@ -1,11 +1,11 @@
 <template>
-  <div class="TaskList">
+  <transition-group class="TaskList">
     <TaskListItem
       v-for="task in taskList"
       :key="task._id"
       :task="task"
     />
-  </div>
+  </transition-group>
 </template>
 
 <script>
@@ -28,5 +28,15 @@ export default {
   justify-content: space-around;
   align-content: flex-start;
   flex-wrap: wrap;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.4s ease-out;
+}
+
+.v-enter,
+.v-leave-to {
+  transform: scale(0);
+  opacity: 0;
 }
 </style>

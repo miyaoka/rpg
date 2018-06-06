@@ -1,12 +1,12 @@
 <template>
-  <div class="WorkerList">
+  <transition-group class="WorkerList">
     <WorkerListItem
       v-for="worker in workerList"
       :key="worker._id"
       :worker="worker"
       :taskId="taskId"
     />
-  </div>
+  </transition-group>
 </template>
 
 <script>
@@ -30,5 +30,15 @@ export default {
   align-content: flex-start;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.2s ease-out;
+}
+
+.v-enter,
+.v-leave-to {
+  transform: scale(0);
+  opacity: 0;
 }
 </style>
