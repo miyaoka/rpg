@@ -1,0 +1,15 @@
+{
+  "name": "rpg",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt-edge": "^2.0.0-25468832.6578bd7",
+    "shortid": "^2.2.8"
+  }
+}
